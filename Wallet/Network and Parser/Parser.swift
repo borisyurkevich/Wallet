@@ -19,6 +19,7 @@ extension Parser: XMLParserDelegate {
         if elementName == "Cube" {
             print("Currency found, create new instance.")
             guard let currencyCode = attributeDict["currency"] else {
+                // Empty node, we probably okay as parent node is empty.
                 return
             }
             guard let currencyValue = attributeDict["rate"] else {

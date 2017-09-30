@@ -8,15 +8,7 @@
 
 import Foundation
 
-struct EuropeanCentralBankService: NetworkService {
+struct EuropeanCentralBankService {
     
     let api = API(path: "https://www.ecb.europa.eu/stats/eurofxref/eurofxref-daily.xml")
-    
-    func extractCurrencies(data: Data) -> (isSuccess: Bool,
-                                           error: String?,
-                                           result: [Currency]?) {
-        let parser = Parser()
-        let result = parser.parse(data: data)
-        return (result, parser.parsingError, parser.currencies)
-    }
 }

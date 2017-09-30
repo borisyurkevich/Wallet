@@ -18,8 +18,6 @@
 		91C67BE41F7FDE2C00F2EAFA /* Parser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91C67BE31F7FDE2C00F2EAFA /* Parser.swift */; };
 		91C67BE61F7FE64100F2EAFA /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91C67BE51F7FE64100F2EAFA /* API.swift */; };
 		91C67BE81F7FE6DE00F2EAFA /* EuropeanCentralBankService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91C67BE71F7FE6DE00F2EAFA /* EuropeanCentralBankService.swift */; };
-		91C67BE91F7FE8F600F2EAFA /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 914C00761F7FCC8C00425B9E /* NetworkService.swift */; };
-		91C67BEA1F7FE8FC00F2EAFA /* NetworkService+URLSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 914C00771F7FCC8C00425B9E /* NetworkService+URLSession.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -33,8 +31,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		914C00761F7FCC8C00425B9E /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
-		914C00771F7FCC8C00425B9E /* NetworkService+URLSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NetworkService+URLSession.swift"; sourceTree = "<group>"; };
 		914C00781F7FCCEC00425B9E /* Currency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Currency.swift; sourceTree = "<group>"; };
 		91B709991F7FCA65008F664A /* Wallet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Wallet.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		91B7099C1F7FCA65008F664A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -74,8 +70,6 @@
 			isa = PBXGroup;
 			children = (
 				914C00781F7FCCEC00425B9E /* Currency.swift */,
-				914C00761F7FCC8C00425B9E /* NetworkService.swift */,
-				914C00771F7FCC8C00425B9E /* NetworkService+URLSession.swift */,
 				91C67BE31F7FDE2C00F2EAFA /* Parser.swift */,
 				91C67BE51F7FE64100F2EAFA /* API.swift */,
 				91C67BE71F7FE6DE00F2EAFA /* EuropeanCentralBankService.swift */,
@@ -262,11 +256,9 @@
 			files = (
 				914C00791F7FCCEC00425B9E /* Currency.swift in Sources */,
 				91C67BE61F7FE64100F2EAFA /* API.swift in Sources */,
-				91C67BE91F7FE8F600F2EAFA /* NetworkService.swift in Sources */,
 				91C67BE81F7FE6DE00F2EAFA /* EuropeanCentralBankService.swift in Sources */,
 				91B709A51F7FCA65008F664A /* Wallet.xcdatamodeld in Sources */,
 				91C67BE41F7FDE2C00F2EAFA /* Parser.swift in Sources */,
-				91C67BEA1F7FE8FC00F2EAFA /* NetworkService+URLSession.swift in Sources */,
 				91B7099F1F7FCA65008F664A /* ViewController.swift in Sources */,
 				91B7099D1F7FCA65008F664A /* AppDelegate.swift in Sources */,
 			);
