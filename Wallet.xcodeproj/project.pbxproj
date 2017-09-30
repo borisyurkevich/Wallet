@@ -15,6 +15,11 @@
 		91B709A71F7FCA65008F664A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 91B709A61F7FCA65008F664A /* Assets.xcassets */; };
 		91B709AA1F7FCA65008F664A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 91B709A81F7FCA65008F664A /* LaunchScreen.storyboard */; };
 		91B709B51F7FCA65008F664A /* WalletTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91B709B41F7FCA65008F664A /* WalletTests.swift */; };
+		91C67BE41F7FDE2C00F2EAFA /* Parser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91C67BE31F7FDE2C00F2EAFA /* Parser.swift */; };
+		91C67BE61F7FE64100F2EAFA /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91C67BE51F7FE64100F2EAFA /* API.swift */; };
+		91C67BE81F7FE6DE00F2EAFA /* EuropeanCentralBankService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91C67BE71F7FE6DE00F2EAFA /* EuropeanCentralBankService.swift */; };
+		91C67BE91F7FE8F600F2EAFA /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 914C00761F7FCC8C00425B9E /* NetworkService.swift */; };
+		91C67BEA1F7FE8FC00F2EAFA /* NetworkService+URLSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 914C00771F7FCC8C00425B9E /* NetworkService+URLSession.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,6 +47,9 @@
 		91B709B01F7FCA65008F664A /* WalletTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WalletTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		91B709B41F7FCA65008F664A /* WalletTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletTests.swift; sourceTree = "<group>"; };
 		91B709B61F7FCA65008F664A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		91C67BE31F7FDE2C00F2EAFA /* Parser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Parser.swift; sourceTree = "<group>"; };
+		91C67BE51F7FE64100F2EAFA /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
+		91C67BE71F7FE6DE00F2EAFA /* EuropeanCentralBankService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EuropeanCentralBankService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,6 +76,9 @@
 				914C00781F7FCCEC00425B9E /* Currency.swift */,
 				914C00761F7FCC8C00425B9E /* NetworkService.swift */,
 				914C00771F7FCC8C00425B9E /* NetworkService+URLSession.swift */,
+				91C67BE31F7FDE2C00F2EAFA /* Parser.swift */,
+				91C67BE51F7FE64100F2EAFA /* API.swift */,
+				91C67BE71F7FE6DE00F2EAFA /* EuropeanCentralBankService.swift */,
 			);
 			path = "Network and Parser";
 			sourceTree = "<group>";
@@ -250,7 +261,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				914C00791F7FCCEC00425B9E /* Currency.swift in Sources */,
+				91C67BE61F7FE64100F2EAFA /* API.swift in Sources */,
+				91C67BE91F7FE8F600F2EAFA /* NetworkService.swift in Sources */,
+				91C67BE81F7FE6DE00F2EAFA /* EuropeanCentralBankService.swift in Sources */,
 				91B709A51F7FCA65008F664A /* Wallet.xcdatamodeld in Sources */,
+				91C67BE41F7FDE2C00F2EAFA /* Parser.swift in Sources */,
+				91C67BEA1F7FE8FC00F2EAFA /* NetworkService+URLSession.swift in Sources */,
 				91B7099F1F7FCA65008F664A /* ViewController.swift in Sources */,
 				91B7099D1F7FCA65008F664A /* AppDelegate.swift in Sources */,
 			);
