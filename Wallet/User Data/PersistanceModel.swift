@@ -22,12 +22,21 @@ struct PersistanceModel {
     
     private mutating func createNewUser() -> User {
         let newUser = NSEntityDescription.insertNewObject(forEntityName: "User", into: managedObjectContext) as! User
-        let usdAccount = NSEntityDescription.insertNewObject(forEntityName: "Account", into: managedObjectContext) as! Account
-        usdAccount.balance = 100.0
         
-        newUser.accounts = NSSet(array: [usdAccount])
+        let usdAccount = createAccount(type: .usd, balance: 100.0)
+        let gbpAccount = createAccount(type: .gbp, balance: 100.0)
+        let euroAccount = createAccount(type: .eur, balance: 100.0)
+        
+        newUser.accounts = NSSet(array: [usdAccount, gbpAccount, euroAccount])
 
         return newUser
+    }
+    
+    private mutating func createAccount(type: CurrencyType, balance: Double) -> Account {
+        let account = NSEntityDescription.insertNewObject(forEntityName: "Account", into: managedObjectContext) as! Account
+        account.balance = 100.0
+        account.currencyType = type.rawValue
+        return account
     }
     
     private mutating func fetchExistingUser() -> User? {

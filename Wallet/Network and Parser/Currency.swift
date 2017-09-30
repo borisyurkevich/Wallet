@@ -9,7 +9,7 @@
 import Foundation
 
 // Udpate this constant when modifying CurrencyType.
-let kTotalCurrencies = 31
+let kTotalCurrencies = 32
 
 enum CurrencyType: String {
     case usd = "USD"
@@ -43,8 +43,9 @@ enum CurrencyType: String {
     case sgd = "SGD"
     case thb = "THB"
     case zar = "ZAR"
+    case eur = "EUR"
     
-    static let all = [usd, jpy, bgn, czk, dkk, gbp, huf, pln, ron, sek, chf, nok, hrk, rub, turkishLira, aud, brl, cad, cny, hkd, idr, ils, inr, krw, mxn, myr, nzd, php, sgd, thb, zar]
+    static let all = [usd, jpy, bgn, czk, dkk, gbp, huf, pln, ron, sek, chf, nok, hrk, rub, turkishLira, aud, brl, cad, cny, hkd, idr, ils, inr, krw, mxn, myr, nzd, php, sgd, thb, zar, eur]
 }
 
 struct Currency {
