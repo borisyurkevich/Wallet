@@ -39,17 +39,6 @@ extension Parser: XMLParserDelegate {
         }
         
     }
-    
-    func parser(_ parser: XMLParser,
-                didEndElement elementName: String,
-                namespaceURI: String?,
-                qualifiedName qName: String?) {
-        
-    }
-    
-    func parser(_ parser: XMLParser, foundCharacters string: String) {
-        
-    }
 }
 
 final class Parser: NSObject {
