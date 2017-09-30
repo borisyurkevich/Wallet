@@ -12,6 +12,8 @@ final class ViewController: UIViewController {
     
     private let service = EuropeanCentralBankService()
     private let parser = Parser()
+    var coreData: PersistanceModel? = nil
+    var user: User?
     
     @IBAction func tapRefresh(_ sender: Any) {
         actionRefresh()
@@ -20,6 +22,13 @@ final class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        coreData = PersistanceModel()
+        user = coreData?.fetchUser()
+        if user != nil {
+            print("user found")
+        } else {
+            print("user not found")
+        }
     }
     
     private func actionRefresh() {
