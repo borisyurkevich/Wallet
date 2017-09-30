@@ -40,14 +40,25 @@ class CarouselViewController: UIViewController {
                         self.mainLabel.center = self.rightView.center
                         self.leftLabel.center = self.mainView.center
                         self.rightLabel.center = self.leftView.center
+                        
+                        self.mainLabel.transform = CGAffineTransform.init(scaleX: 0.5, y: 0.5)
+                        self.leftLabel.transform = CGAffineTransform.init(scaleX: 1.0, y: 1.0)
+                        
                     case .second:
                         self.mainLabel.center = self.leftView.center
                         self.leftLabel.center = self.rightView.center
                         self.rightLabel.center = self.mainView.center
+                        
+                        self.rightLabel.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
+                        self.leftLabel.transform = CGAffineTransform(scaleX: 0.5, y: 0.5)
+                        
                     case .third:
                         self.mainLabel.center = self.mainView.center
                         self.leftLabel.center = self.leftView.center
                         self.rightLabel.center = self.rightView.center
+                        
+                        self.mainLabel.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
+                        self.rightLabel.transform = CGAffineTransform(scaleX: 0.5, y: 0.5)
                     }
                 }
             } else {
@@ -59,14 +70,25 @@ class CarouselViewController: UIViewController {
                         self.mainLabel.center = self.leftView.center
                         self.leftLabel.center = self.rightView.center
                         self.rightLabel.center = self.mainView.center
+                        
+                        self.rightLabel.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
+                        self.mainLabel.transform = CGAffineTransform(scaleX: 0.5, y: 0.5)
+                        
                     case .second:
                         self.mainLabel.center = self.mainView.center
                         self.leftLabel.center = self.leftView.center
                         self.rightLabel.center = self.rightView.center
+                        
+                        self.leftLabel.transform = CGAffineTransform(scaleX: 0.5, y: 0.5)
+                        self.mainLabel.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
+                        
                     case .third:
                         self.mainLabel.center = self.rightView.center
                         self.leftLabel.center = self.mainView.center
                         self.rightLabel.center = self.leftView.center
+                        
+                        self.rightLabel.transform = CGAffineTransform.init(scaleX: 0.5, y: 0.5)
+                        self.leftLabel.transform = CGAffineTransform.init(scaleX: 1.0, y: 1.0)
                     }
                 }
             }
@@ -114,7 +136,10 @@ class CarouselViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        mainLabel.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
+        rightLabel.transform = CGAffineTransform(scaleX: 0.5, y: 0.5)
+        leftLabel.transform = CGAffineTransform(scaleX: 0.5, y: 0.5)
     }
     
 
