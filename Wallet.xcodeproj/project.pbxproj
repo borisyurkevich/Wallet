@@ -19,6 +19,7 @@
 		91C67BE61F7FE64100F2EAFA /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91C67BE51F7FE64100F2EAFA /* API.swift */; };
 		91C67BE81F7FE6DE00F2EAFA /* EuropeanCentralBankService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91C67BE71F7FE6DE00F2EAFA /* EuropeanCentralBankService.swift */; };
 		91C67BEC1F7FF5FD00F2EAFA /* PersistanceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91C67BEB1F7FF5FD00F2EAFA /* PersistanceModel.swift */; };
+		91C67BEE1F8011B800F2EAFA /* Converter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91C67BED1F8011B800F2EAFA /* Converter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +49,7 @@
 		91C67BE51F7FE64100F2EAFA /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		91C67BE71F7FE6DE00F2EAFA /* EuropeanCentralBankService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EuropeanCentralBankService.swift; sourceTree = "<group>"; };
 		91C67BEB1F7FF5FD00F2EAFA /* PersistanceModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistanceModel.swift; sourceTree = "<group>"; };
+		91C67BED1F8011B800F2EAFA /* Converter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Converter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,6 +102,7 @@
 		91876B161F7FCBE0007B4651 /* Currency Converter */ = {
 			isa = PBXGroup;
 			children = (
+				91C67BED1F8011B800F2EAFA /* Converter.swift */,
 			);
 			path = "Currency Converter";
 			sourceTree = "<group>";
@@ -261,6 +264,7 @@
 				91C67BE61F7FE64100F2EAFA /* API.swift in Sources */,
 				91C67BE81F7FE6DE00F2EAFA /* EuropeanCentralBankService.swift in Sources */,
 				91C67BEC1F7FF5FD00F2EAFA /* PersistanceModel.swift in Sources */,
+				91C67BEE1F8011B800F2EAFA /* Converter.swift in Sources */,
 				91B709A51F7FCA65008F664A /* Wallet.xcdatamodeld in Sources */,
 				91C67BE41F7FDE2C00F2EAFA /* Parser.swift in Sources */,
 				91B7099F1F7FCA65008F664A /* ViewController.swift in Sources */,

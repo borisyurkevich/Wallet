@@ -21,11 +21,23 @@ class WalletTests: XCTestCase {
         let service = EuropeanCentralBankService()
         let isDataValid = parser.parse(url: service.api.url!)
         if isDataValid {
-            print("Found currencnes: \(parser.currencies)")
-            XCTAssert(parser.currencies.count == kTotalCurrencies)
+            XCTAssert(true)
         } else {
             XCTFail("XML Parser Error: \(parser.parsingError!)")
         }
+    }
+    
+    func testCurrencyConverter() {
+        let parser = Parser()
+        let service = EuropeanCentralBankService()
+        _ = parser.parse(url: service.api.url!)
+        let converter = Converter(rates: parser.currencies)
+        
+        // Convert 10 GBP to USD
+        let result = converter.convert(fromCurrency: .gbp, toCurrency: .usd, amount: 10.0)
+        XCTAssert(result.sucess)
+        XCTAssert(result.amount != nil)
+        print("💵 Converted 10 GBP to USD, Result is \(result.amount!)")
     }
     
 }

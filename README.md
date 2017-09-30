@@ -16,3 +16,4 @@
 ## Unit Tests
 1. Test currency list, all property should return correct count of currencies.
 2. Test network API
+3. Test currency converter
