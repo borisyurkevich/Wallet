@@ -1,2 +1,6 @@
 
 *.xcbkptlist
+
+.Ulysses-Group.plist
+
+.Ulysses-favorites.plist
