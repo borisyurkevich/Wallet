@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		914C00791F7FCCEC00425B9E /* Currency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 914C00781F7FCCEC00425B9E /* Currency.swift */; };
 		91B7099D1F7FCA65008F664A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91B7099C1F7FCA65008F664A /* AppDelegate.swift */; };
 		91B7099F1F7FCA65008F664A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91B7099E1F7FCA65008F664A /* ViewController.swift */; };
 		91B709A21F7FCA65008F664A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 91B709A01F7FCA65008F664A /* Main.storyboard */; };
@@ -27,6 +28,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		914C00761F7FCC8C00425B9E /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
+		914C00771F7FCC8C00425B9E /* NetworkService+URLSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NetworkService+URLSession.swift"; sourceTree = "<group>"; };
+		914C00781F7FCCEC00425B9E /* Currency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Currency.swift; sourceTree = "<group>"; };
 		91B709991F7FCA65008F664A /* Wallet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Wallet.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		91B7099C1F7FCA65008F664A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		91B7099E1F7FCA65008F664A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -61,6 +65,9 @@
 		91876B131F7FCB95007B4651 /* Network and Parser */ = {
 			isa = PBXGroup;
 			children = (
+				914C00781F7FCCEC00425B9E /* Currency.swift */,
+				914C00761F7FCC8C00425B9E /* NetworkService.swift */,
+				914C00771F7FCC8C00425B9E /* NetworkService+URLSession.swift */,
 			);
 			path = "Network and Parser";
 			sourceTree = "<group>";
@@ -242,6 +249,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				914C00791F7FCCEC00425B9E /* Currency.swift in Sources */,
 				91B709A51F7FCA65008F664A /* Wallet.xcdatamodeld in Sources */,
 				91B7099F1F7FCA65008F664A /* ViewController.swift in Sources */,
 				91B7099D1F7FCA65008F664A /* AppDelegate.swift in Sources */,
@@ -399,7 +407,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = AF8594QJUT;
-				INFOPLIST_FILE = Wallet/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/Wallet/Support files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.cocoaswitch.Wallet;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -414,7 +422,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = AF8594QJUT;
-				INFOPLIST_FILE = Wallet/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/Wallet/Support files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.cocoaswitch.Wallet;
 				PRODUCT_NAME = "$(TARGET_NAME)";
