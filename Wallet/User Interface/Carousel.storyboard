@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="DQx-6p-FlQ">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Carousel View Controller-->
+        <scene sceneID="uOF-YK-0uK">
+            <objects>
+                <viewController id="DQx-6p-FlQ" customClass="CarouselViewController" customModule="Wallet" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="0Xi-Fb-sXx"/>
+                        <viewControllerLayoutGuide type="bottom" id="rgs-Sc-rXv"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="vZB-6q-dwX">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="200"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0cs-ww-Qo4">
+                                <rect key="frame" x="16" y="8" width="45" height="69"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rBW-KY-kpC">
+                                <rect key="frame" x="330.5" y="30.5" width="12.5" height="24"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zHD-dL-Vgj">
+                                <rect key="frame" x="180" y="118" width="15" height="41"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="34"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="AYt-Ax-Mky">
+                                <rect key="frame" x="168" y="155" width="39" height="37"/>
+                            </pageControl>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5ht-fx-1mh" userLabel="Left view">
+                                <rect key="frame" x="16" y="20" width="45" height="45"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="45" id="Uzl-fB-CI7"/>
+                                    <constraint firstAttribute="height" constant="45" id="cdi-Ib-Gqa"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YIu-Ug-FPj" userLabel="Right view">
+                                <rect key="frame" x="314" y="20" width="45" height="45"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="45" id="iKY-Hg-LTK"/>
+                                    <constraint firstAttribute="height" constant="45" id="vsW-vJ-oDQ"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mJt-cp-jvz" userLabel="Main view">
+                                <rect key="frame" x="165" y="116" width="45" height="45"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="45" id="Btx-RU-wbj"/>
+                                    <constraint firstAttribute="height" constant="45" id="Xra-Vw-ocl"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" name="keyboardFocusIndicatorColor" catalog="System" colorSpace="catalog"/>
+                        <gestureRecognizers/>
+                        <constraints>
+                            <constraint firstItem="5ht-fx-1mh" firstAttribute="leading" secondItem="vZB-6q-dwX" secondAttribute="leadingMargin" id="0Ye-bR-4X8"/>
+                            <constraint firstItem="0cs-ww-Qo4" firstAttribute="top" secondItem="0Xi-Fb-sXx" secondAttribute="bottom" constant="8" symbolic="YES" id="5eZ-bu-tka"/>
+                            <constraint firstItem="0cs-ww-Qo4" firstAttribute="centerX" secondItem="5ht-fx-1mh" secondAttribute="centerX" id="6P7-kt-RfM"/>
+                            <constraint firstItem="rBW-KY-kpC" firstAttribute="centerX" secondItem="YIu-Ug-FPj" secondAttribute="centerX" id="7Vb-Jl-gKl"/>
+                            <constraint firstItem="AYt-Ax-Mky" firstAttribute="top" secondItem="mJt-cp-jvz" secondAttribute="bottom" constant="-6" id="832-IA-8Be"/>
+                            <constraint firstItem="AYt-Ax-Mky" firstAttribute="centerX" secondItem="vZB-6q-dwX" secondAttribute="centerX" id="Dax-Iz-F5N"/>
+                            <constraint firstItem="YIu-Ug-FPj" firstAttribute="top" secondItem="0Xi-Fb-sXx" secondAttribute="bottom" constant="20" id="Ofa-it-pad"/>
+                            <constraint firstItem="0cs-ww-Qo4" firstAttribute="centerY" secondItem="5ht-fx-1mh" secondAttribute="centerY" id="PTC-eP-Opo"/>
+                            <constraint firstItem="5ht-fx-1mh" firstAttribute="top" secondItem="0Xi-Fb-sXx" secondAttribute="bottom" constant="20" id="TOr-Io-eS0"/>
+                            <constraint firstItem="zHD-dL-Vgj" firstAttribute="centerY" secondItem="mJt-cp-jvz" secondAttribute="centerY" id="UE4-00-KEH"/>
+                            <constraint firstItem="rgs-Sc-rXv" firstAttribute="top" secondItem="AYt-Ax-Mky" secondAttribute="bottom" constant="8" symbolic="YES" id="XBb-8a-JFt"/>
+                            <constraint firstItem="YIu-Ug-FPj" firstAttribute="trailing" secondItem="vZB-6q-dwX" secondAttribute="trailingMargin" id="dd7-Ts-CfJ"/>
+                            <constraint firstItem="0cs-ww-Qo4" firstAttribute="leading" secondItem="vZB-6q-dwX" secondAttribute="leadingMargin" id="fGI-VF-src"/>
+                            <constraint firstItem="rBW-KY-kpC" firstAttribute="centerY" secondItem="YIu-Ug-FPj" secondAttribute="centerY" id="gpx-Ai-qwq"/>
+                            <constraint firstItem="mJt-cp-jvz" firstAttribute="centerX" secondItem="vZB-6q-dwX" secondAttribute="centerX" id="tKM-5y-MFx"/>
+                            <constraint firstItem="zHD-dL-Vgj" firstAttribute="centerX" secondItem="mJt-cp-jvz" secondAttribute="centerX" id="vJO-dh-5rv"/>
+                        </constraints>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="lrZ-N5-GTI" appends="YES" id="0KN-Qz-ekL"/>
+                        </connections>
+                    </view>
+                    <size key="freeformSize" width="375" height="200"/>
+                    <connections>
+                        <outlet property="leftLabel" destination="0cs-ww-Qo4" id="sdJ-ey-MiR"/>
+                        <outlet property="leftView" destination="5ht-fx-1mh" id="vZK-Nt-1Rt"/>
+                        <outlet property="mainLabel" destination="zHD-dL-Vgj" id="gsk-2h-hHd"/>
+                        <outlet property="mainView" destination="mJt-cp-jvz" id="9R7-fA-zVd"/>
+                        <outlet property="pageControl" destination="AYt-Ax-Mky" id="Ckg-c3-KkZ"/>
+                        <outlet property="rightLabel" destination="rBW-KY-kpC" id="Rse-OF-dfk"/>
+                        <outlet property="rightView" destination="YIu-Ug-FPj" id="Rwi-ve-vv4"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="k51-mX-85s" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <panGestureRecognizer minimumNumberOfTouches="1" id="lrZ-N5-GTI">
+                    <connections>
+                        <action selector="pan:" destination="DQx-6p-FlQ" id="EZW-Zu-iG3"/>
+                    </connections>
+                </panGestureRecognizer>
+            </objects>
+            <point key="canvasLocation" x="-410.39999999999998" y="209.59520239880061"/>
+        </scene>
+    </scenes>
+</document>

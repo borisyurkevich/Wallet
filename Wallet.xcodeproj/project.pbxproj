@@ -20,6 +20,8 @@
 		91C67BE81F7FE6DE00F2EAFA /* EuropeanCentralBankService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91C67BE71F7FE6DE00F2EAFA /* EuropeanCentralBankService.swift */; };
 		91C67BEC1F7FF5FD00F2EAFA /* PersistanceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91C67BEB1F7FF5FD00F2EAFA /* PersistanceModel.swift */; };
 		91C67BEE1F8011B800F2EAFA /* Converter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91C67BED1F8011B800F2EAFA /* Converter.swift */; };
+		91C67BF01F801D0A00F2EAFA /* Carousel.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 91C67BEF1F801D0A00F2EAFA /* Carousel.storyboard */; };
+		91C67BF21F801E9200F2EAFA /* CarouselViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91C67BF11F801E9200F2EAFA /* CarouselViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,6 +52,8 @@
 		91C67BE71F7FE6DE00F2EAFA /* EuropeanCentralBankService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EuropeanCentralBankService.swift; sourceTree = "<group>"; };
 		91C67BEB1F7FF5FD00F2EAFA /* PersistanceModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistanceModel.swift; sourceTree = "<group>"; };
 		91C67BED1F8011B800F2EAFA /* Converter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Converter.swift; sourceTree = "<group>"; };
+		91C67BEF1F801D0A00F2EAFA /* Carousel.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Carousel.storyboard; sourceTree = "<group>"; };
+		91C67BF11F801E9200F2EAFA /* CarouselViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarouselViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,6 +99,8 @@
 			children = (
 				91B709A01F7FCA65008F664A /* Main.storyboard */,
 				91B7099E1F7FCA65008F664A /* ViewController.swift */,
+				91C67BEF1F801D0A00F2EAFA /* Carousel.storyboard */,
+				91C67BF11F801E9200F2EAFA /* CarouselViewController.swift */,
 			);
 			path = "User Interface";
 			sourceTree = "<group>";
@@ -240,6 +246,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				91C67BF01F801D0A00F2EAFA /* Carousel.storyboard in Resources */,
 				91B709AA1F7FCA65008F664A /* LaunchScreen.storyboard in Resources */,
 				91B709A71F7FCA65008F664A /* Assets.xcassets in Resources */,
 				91B709A21F7FCA65008F664A /* Main.storyboard in Resources */,
@@ -260,6 +267,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				91C67BF21F801E9200F2EAFA /* CarouselViewController.swift in Sources */,
 				914C00791F7FCCEC00425B9E /* Currency.swift in Sources */,
 				91C67BE61F7FE64100F2EAFA /* API.swift in Sources */,
 				91C67BE81F7FE6DE00F2EAFA /* EuropeanCentralBankService.swift in Sources */,

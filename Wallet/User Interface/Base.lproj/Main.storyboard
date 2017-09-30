@@ -16,7 +16,23 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eXH-R7-fjl">
+                                <rect key="frame" x="0.0" y="64" width="375" height="216"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="216" id="tED-Li-DE1"/>
+                                </constraints>
+                                <connections>
+                                    <segue destination="Y1c-gz-Jtu" kind="embed" id="Obx-n9-Q12"/>
+                                </connections>
+                            </containerView>
+                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="eXH-R7-fjl" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="CAg-F1-kv1"/>
+                            <constraint firstItem="eXH-R7-fjl" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="XUb-9v-f6k"/>
+                            <constraint firstItem="eXH-R7-fjl" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="xgO-QB-CO8"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" id="Q6G-Jk-O2G">
@@ -30,6 +46,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="476" y="132.68365817091455"/>
+        </scene>
+        <!--Carousel-->
+        <scene sceneID="eVD-R3-fcs">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Carousel" id="Y1c-gz-Jtu" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ah5-Ph-3o3" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1100" y="132"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="UG2-2V-Y01">
