@@ -23,7 +23,7 @@
                                     <constraint firstAttribute="height" constant="216" id="tED-Li-DE1"/>
                                 </constraints>
                                 <connections>
-                                    <segue destination="Y1c-gz-Jtu" kind="embed" id="Obx-n9-Q12"/>
+                                    <segue destination="Y1c-gz-Jtu" kind="embed" identifier="carousel" id="Obx-n9-Q12"/>
                                 </connections>
                             </containerView>
                         </subviews>
