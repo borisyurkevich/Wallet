@@ -16,4 +16,16 @@ class WalletTests: XCTestCase {
         XCTAssert(CurrencyType.all.count == kTotalCurrencies)
     }
     
+    func testAPI() {
+        let parser = Parser()
+        let service = EuropeanCentralBankService()
+        let isDataValid = parser.parse(url: service.api.url!)
+        if isDataValid {
+            print("Found currencnes: \(parser.currencies)")
+            XCTAssert(parser.currencies.count == kTotalCurrencies)
+        } else {
+            XCTFail("XML Parser Error: \(parser.parsingError!)")
+        }
+    }
+    
 }
