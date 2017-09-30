@@ -1,7 +1,7 @@
 # XML Currency Parser
 
 ## Goals
-1. UI screen
+1. UI screens with new `UIViewPropertyAnimator` (allows user to control animation).
 2. Currency rate display
 3. Currency converter
 
