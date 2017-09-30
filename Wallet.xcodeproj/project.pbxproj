@@ -58,6 +58,48 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		91876B131F7FCB95007B4651 /* Network and Parser */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "Network and Parser";
+			sourceTree = "<group>";
+		};
+		91876B141F7FCB9C007B4651 /* User Data */ = {
+			isa = PBXGroup;
+			children = (
+				91B709A31F7FCA65008F664A /* Wallet.xcdatamodeld */,
+			);
+			path = "User Data";
+			sourceTree = "<group>";
+		};
+		91876B151F7FCBAA007B4651 /* User Interface */ = {
+			isa = PBXGroup;
+			children = (
+				91B709A01F7FCA65008F664A /* Main.storyboard */,
+				91B7099E1F7FCA65008F664A /* ViewController.swift */,
+			);
+			path = "User Interface";
+			sourceTree = "<group>";
+		};
+		91876B161F7FCBE0007B4651 /* Currency Converter */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "Currency Converter";
+			sourceTree = "<group>";
+		};
+		91876B171F7FCC06007B4651 /* Support files */ = {
+			isa = PBXGroup;
+			children = (
+				91B7099C1F7FCA65008F664A /* AppDelegate.swift */,
+				91B709A61F7FCA65008F664A /* Assets.xcassets */,
+				91B709A81F7FCA65008F664A /* LaunchScreen.storyboard */,
+				91B709AB1F7FCA65008F664A /* Info.plist */,
+			);
+			path = "Support files";
+			sourceTree = "<group>";
+		};
 		91B709901F7FCA65008F664A = {
 			isa = PBXGroup;
 			children = (
@@ -79,13 +121,11 @@
 		91B7099B1F7FCA65008F664A /* Wallet */ = {
 			isa = PBXGroup;
 			children = (
-				91B7099C1F7FCA65008F664A /* AppDelegate.swift */,
-				91B7099E1F7FCA65008F664A /* ViewController.swift */,
-				91B709A01F7FCA65008F664A /* Main.storyboard */,
-				91B709A61F7FCA65008F664A /* Assets.xcassets */,
-				91B709A81F7FCA65008F664A /* LaunchScreen.storyboard */,
-				91B709AB1F7FCA65008F664A /* Info.plist */,
-				91B709A31F7FCA65008F664A /* Wallet.xcdatamodeld */,
+				91876B131F7FCB95007B4651 /* Network and Parser */,
+				91876B161F7FCBE0007B4651 /* Currency Converter */,
+				91876B141F7FCB9C007B4651 /* User Data */,
+				91876B151F7FCBAA007B4651 /* User Interface */,
+				91876B171F7FCC06007B4651 /* Support files */,
 			);
 			path = Wallet;
 			sourceTree = "<group>";
