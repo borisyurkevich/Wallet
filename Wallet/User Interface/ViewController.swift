@@ -88,10 +88,10 @@ final class ViewController: UIViewController {
     /// all 3 properties and toggles Exchange button enabled state.
     private func setExchangeCurrency(fromCurrencyIndex: Int?, toCurrencyIndex: Int?, amount: Double?) {
         if let to = toCurrencyIndex {
-            currentCurrency = ViewModel.currences[to]
+            selectedToExchangeCurrency = ViewModel.currences[to]
         }
         if let from = fromCurrencyIndex {
-            selectedToExchangeCurrency = ViewModel.userAccounts[from]
+            currentCurrency = ViewModel.userAccounts[from]
         }
         if let safeAmount = amount {
             amountToExchange = safeAmount
@@ -111,8 +111,8 @@ final class ViewController: UIViewController {
             print("converter not found")
             return
         }
-        let exchange = safeConverted.convert(fromCurrency: currentCurrency!,
-                                            toCurrency: selectedToExchangeCurrency!,
+        let exchange = safeConverted.convert(fromCurrency: selectedToExchangeCurrency!,
+                                            toCurrency: currentCurrency!,
                                                 amount: amountToExchange)
         if exchange.sucess {
             var fromAccount: Account?
@@ -131,26 +131,34 @@ final class ViewController: UIViewController {
                 }
             }
             guard let safeToAccount = toAccount else {
+                presentAlert(text: "Exchange Error")
                 return
             }
             guard let safeFromAccount = fromAccount else {
+                presentAlert(text: "Exchange Error")
+                return
+            }
+            // Make sure enough money on balance
+            if exchange.amount! > safeFromAccount.balance {
+                presentAlert(text: "Not Enough Funds")
                 return
             }
             // Dedact money from current.
-            safeToAccount.balance -= exchange.amount!
+            safeFromAccount.balance -= exchange.amount!
             // Add money to new account.
-            safeFromAccount.balance += amountToExchange
+            safeToAccount.balance += amountToExchange
             let updatedAccounts = NSMutableSet(array: [safeToAccount, safeFromAccount])
             updatedAccounts.addObjects(from: irrelevantAccounts)
             user?.accounts = NSSet(set: updatedAccounts)
             displayUserBalance()
-            presentSuccessAlert()
+            presentAlert(text: "Exchange Succeeded")
+        } else {
+            presentAlert(text: "Exchange Failed")
         }
     }
     
-    private func presentSuccessAlert() {
-        let title = "Exchange Succeeded"
-        let alert = UIAlertController(title: title, message: nil, preferredStyle: .alert)
+    private func presentAlert(text: String) {
+        let alert = UIAlertController(title: text, message: nil, preferredStyle: .alert)
         let ok = UIAlertAction(title: "OK", style: .default, handler: nil)
         alert.addAction(ok)
         present(alert, animated: true, completion: nil)
