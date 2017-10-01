@@ -48,7 +48,7 @@ final class ViewController: UIViewController {
     private var currentCurrency: CurrencyType? = nil
     private var selectedToExchangeCurrency: CurrencyType? = nil
     private var amountToExchange: Double = 0.0
-    
+    private var converter: Converter?
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "carousel" {
@@ -78,12 +78,14 @@ final class ViewController: UIViewController {
     private func actionRefresh() {
         let isDataValid = parser.parse(url: service.api.url!)
         if isDataValid {
-            print("success")
+            converter = Converter(rates: parser.currencies)
         } else {
             print("XML Parser Error: \(parser.parsingError!)")
         }
     }
     
+    /// Set one of 3 properties required for exchange. This method validates
+    /// all 3 properties and toggles Exchange button enabled state.
     private func setExchangeCurrency(fromCurrencyIndex: Int?, toCurrencyIndex: Int?, amount: Double?) {
         if let to = toCurrencyIndex {
             currentCurrency = ViewModel.currences[to]
@@ -103,8 +105,55 @@ final class ViewController: UIViewController {
         }
     }
     
+    /// Only call this when selectedToExchangeCurrency and currentCurrency set.
     private func actionExchange() {
-        
+        guard let safeConverted = converter else {
+            print("converter not found")
+            return
+        }
+        let exchange = safeConverted.convert(fromCurrency: currentCurrency!,
+                                            toCurrency: selectedToExchangeCurrency!,
+                                                amount: amountToExchange)
+        if exchange.sucess {
+            var fromAccount: Account?
+            var toAccount: Account?
+            var irrelevantAccounts = [Account]()
+            
+            // Because of complex Core Data relationship we will create copy
+            // of all user accounts first.
+            for account in user?.accounts?.allObjects as! [Account] {
+                if account.currencyType! == currentCurrency!.rawValue {
+                    fromAccount = account
+                } else if account.currencyType! == selectedToExchangeCurrency!.rawValue {
+                    toAccount = account
+                } else {
+                    irrelevantAccounts.append(account)
+                }
+            }
+            guard let safeToAccount = toAccount else {
+                return
+            }
+            guard let safeFromAccount = fromAccount else {
+                return
+            }
+            // Dedact money from current.
+            safeToAccount.balance -= exchange.amount!
+            // Add money to new account.
+            safeFromAccount.balance += amountToExchange
+            let updatedAccounts = NSMutableSet(array: [safeToAccount, safeFromAccount])
+            updatedAccounts.addObjects(from: irrelevantAccounts)
+            user?.accounts = NSSet(set: updatedAccounts)
+            displayUserBalance()
+            presentSuccessAlert()
+        }
+    }
+    
+    private func presentSuccessAlert() {
+        let title = "Exchange Performed Succesfully"
+        let alert = UIAlertController(title: title, message: nil, preferredStyle: .alert)
+        let ok = UIAlertAction(title: "OK", style: .default, handler: nil)
+        alert.addAction(ok)
+        present(alert, animated: true, completion: nil)
     }
     
     private func displayUserBalance() {
