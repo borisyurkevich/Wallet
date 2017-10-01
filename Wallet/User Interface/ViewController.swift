@@ -17,14 +17,18 @@ extension ViewController: UITextFieldDelegate {
 extension ViewController: CarouselViewControllerDelegate {
     func updateState(newState: State) {
         setExchangeCurrency(fromCurrencyIndex: newState.rawValue, toCurrencyIndex: nil, amount: nil)
+        displayRates()
     }
 }
 
 final class ViewController: UIViewController {
     
     @IBOutlet weak var segmentedControl: UISegmentedControl!
-    @IBOutlet weak var textField: UITextField!
+    @IBOutlet weak var amountPlusTextField: UITextField!
+    @IBOutlet weak var amountMinusTextField: UITextField!
     @IBOutlet weak var exchangeButton: UIBarButtonItem!
+    @IBOutlet weak var amountPlusRateLabel: UILabel!
+    @IBOutlet weak var amountMinusRateLabel: UILabel!
     @IBAction func tapRefresh(_ sender: Any) {
         actionRefresh()
     }
@@ -33,9 +37,10 @@ final class ViewController: UIViewController {
     }
     @IBAction func tapSegementedControl(_ sender: UISegmentedControl) {
         setExchangeCurrency(fromCurrencyIndex: nil, toCurrencyIndex: sender.selectedSegmentIndex, amount: nil)
+        displayRates()
     }
     @IBAction func textFieldEditingChange(_ sender: Any) {
-        if let text = textField.text {
+        if let text = amountPlusTextField.text {
             setExchangeCurrency(fromCurrencyIndex: nil, toCurrencyIndex: nil, amount: Double(text))
         }
     }
@@ -62,7 +67,7 @@ final class ViewController: UIViewController {
         
         coreData = PersistanceModel()
         displayUserBalance()
-        textField.delegate = self
+        amountPlusTextField.delegate = self
         setupSegmentedControl()
         updateExchangeRatesRegularly()
     }
@@ -72,6 +77,8 @@ final class ViewController: UIViewController {
         for (index, currency) in ViewModel.currences.enumerated() {
             segmentedControl.insertSegment(withTitle: currency.rawValue, at: index, animated: false)
         }
+        segmentedControl.selectedSegmentIndex = 0
+        setExchangeCurrency(fromCurrencyIndex: nil, toCurrencyIndex: 0, amount: nil)
     }
     
     @objc
@@ -79,8 +86,31 @@ final class ViewController: UIViewController {
         let isDataValid = parser.parse(url: service.api.url!)
         if isDataValid {
             converter = Converter(rates: parser.currencies)
+            displayRates()
         } else {
             print("XML Parser Error: \(parser.parsingError!)")
+        }
+    }
+    
+    private func displayRates() {
+        guard let safeConverter = converter else {
+            return
+        }
+        if let safeCurrentCurrency = currentCurrency, let safeSelected = selectedToExchangeCurrency {
+            let rate1Conversion = safeConverter.convert(fromCurrency: safeSelected, toCurrency: safeCurrentCurrency, amount: 1)
+            if rate1Conversion.sucess {
+                let formattedRate = String(format: "%.2f", rate1Conversion.amount!)
+                amountPlusRateLabel.text = "\(safeSelected.symbol())1 = \(safeCurrentCurrency.symbol())\(formattedRate)"
+            } else {
+                amountPlusRateLabel.text = nil
+            }
+            let rate2Conversion = safeConverter.convert(fromCurrency: safeCurrentCurrency, toCurrency: safeSelected, amount: 1)
+            if rate2Conversion.sucess {
+                let formattedRate = String(format: "%.2f", rate2Conversion.amount!)
+                amountMinusRateLabel.text = "\(safeCurrentCurrency.symbol())1 = \(safeSelected.symbol())\(formattedRate)"
+            } else {
+                amountMinusRateLabel.text = nil
+            }
         }
     }
     
@@ -197,7 +227,7 @@ final class ViewController: UIViewController {
             
         } else {
             navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .refresh, target: self, action: #selector(self.actionRefresh))
-            textField.resignFirstResponder()
+            amountPlusTextField.resignFirstResponder()
             exchangeButton.isEnabled = false
         }
     }

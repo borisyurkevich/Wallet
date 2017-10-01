@@ -19,6 +19,9 @@ struct Converter {
     func convert(fromCurrency: CurrencyType,
                  toCurrency: CurrencyType,
                  amount: Double) -> (sucess: Bool, error: String?, amount: Double?) {
+        if fromCurrency == toCurrency {
+            return (true, nil, amount)
+        }
         
         var euroRateRelativeToGivenCurrency: Double? = nil
         var rateFromEuroToNeededCurrency: Double? = nil
@@ -27,9 +30,13 @@ struct Converter {
                 euroRateRelativeToGivenCurrency = rate.valueInEuro
             } else if rate.type == toCurrency {
                 rateFromEuroToNeededCurrency = rate.valueInEuro
-            } else if fromCurrency == .eur {
-                euroRateRelativeToGivenCurrency = 1.0
             }
+        }
+        if toCurrency == .eur {
+            rateFromEuroToNeededCurrency = 1.0
+        }
+        if fromCurrency == .eur {
+            euroRateRelativeToGivenCurrency = 1.0
         }
         if euroRateRelativeToGivenCurrency == nil {
             return (false, "Couldn't find EUR rate to \(fromCurrency.rawValue).", nil)
