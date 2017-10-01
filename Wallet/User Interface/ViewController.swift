@@ -43,7 +43,6 @@ final class ViewController: UIViewController {
     private let service = EuropeanCentralBankService()
     private let parser = Parser()
     private var coreData: PersistanceModel? = nil
-    private var user: User?
     private var carouselViewController: CarouselViewController?
     private var currentCurrency: CurrencyType? = nil
     private var selectedToExchangeCurrency: CurrencyType? = nil
@@ -61,7 +60,6 @@ final class ViewController: UIViewController {
         super.viewDidLoad()
         
         coreData = PersistanceModel()
-        user = coreData?.fetchUser()
         displayUserBalance()
         textField.delegate = self
         setupSegmentedControl()
@@ -122,6 +120,7 @@ final class ViewController: UIViewController {
             
             // Because of complex Core Data relationship we will create copy
             // of all user accounts first.
+            let user = coreData?.fetchUser()
             for account in user?.accounts?.allObjects as! [Account] {
                 if account.currencyType! == currentCurrency!.rawValue {
                     fromAccount = account
@@ -152,6 +151,7 @@ final class ViewController: UIViewController {
             updatedAccounts.addObjects(from: irrelevantAccounts)
             user?.accounts = NSSet(set: updatedAccounts)
             displayUserBalance()
+            coreData?.saveContext()
             presentAlert(text: "Exchange Succeeded")
         } else {
             presentAlert(text: "Exchange Failed", message: exchange.error)
@@ -166,6 +166,7 @@ final class ViewController: UIViewController {
     }
     
     private func displayUserBalance() {
+        let user = coreData?.fetchUser()
         if user == nil {
             // User not found. Handle error.
             return

@@ -40,13 +40,13 @@ struct PersistanceModel {
     }
     
     private mutating func fetchExistingUser() -> User? {
-        let employeesFetch = NSFetchRequest<NSFetchRequestResult>(entityName: "User")
+        let fetch = NSFetchRequest<NSFetchRequestResult>(entityName: "User")
         
         do {
-            let fetchedEmployees = try managedObjectContext.fetch(employeesFetch) as! [User]
-            return fetchedEmployees.first
+            let fetchedUsers = try managedObjectContext.fetch(fetch) as! [User]
+            return fetchedUsers.first
         } catch {
-            fatalError("Failed to fetch employees: \(error)")
+            fatalError("Failed to fetch user: \(error)")
         }
     }
     
