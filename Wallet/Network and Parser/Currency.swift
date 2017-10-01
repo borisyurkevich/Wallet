@@ -46,6 +46,18 @@ enum CurrencyType: String {
     case eur = "EUR"
     
     static let all = [usd, jpy, bgn, czk, dkk, gbp, huf, pln, ron, sek, chf, nok, hrk, rub, turkishLira, aud, brl, cad, cny, hkd, idr, ils, inr, krw, mxn, myr, nzd, php, sgd, thb, zar, eur]
+    
+    func symbol() -> String {
+        if self == .gbp {
+            return "£"
+        } else if self == .eur {
+            return "€"
+        } else if self == .usd {
+            return "$"
+        } else {
+            return ""
+        }
+    }
 }
 
 struct Currency {

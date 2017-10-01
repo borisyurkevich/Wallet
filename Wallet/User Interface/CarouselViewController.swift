@@ -8,15 +8,21 @@
 
 import UIKit
 
-enum State {
+enum State: Int {
     case first
     case second
     case third
 }
 
+protocol CarouselViewControllerDelegate: class {
+    func updateState(newState: State)
+}
+
 class CarouselViewController: UIViewController {
     
-    var animator: UIViewPropertyAnimator!
+    weak var delegate: CarouselViewControllerDelegate?
+    
+    private var animator: UIViewPropertyAnimator!
     private var state = State.first
     
     @IBOutlet weak var mainLabel: UILabel!
@@ -128,11 +134,12 @@ class CarouselViewController: UIViewController {
                     self.pageControl.currentPage = 1
                 }
             }
+            
+            self.delegate?.updateState(newState: self.state)
         default:
             break
         }
     }
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()

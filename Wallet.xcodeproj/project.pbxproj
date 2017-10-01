@@ -22,6 +22,7 @@
 		91C67BEE1F8011B800F2EAFA /* Converter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91C67BED1F8011B800F2EAFA /* Converter.swift */; };
 		91C67BF01F801D0A00F2EAFA /* Carousel.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 91C67BEF1F801D0A00F2EAFA /* Carousel.storyboard */; };
 		91C67BF21F801E9200F2EAFA /* CarouselViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91C67BF11F801E9200F2EAFA /* CarouselViewController.swift */; };
+		91C67BF61F80EF8200F2EAFA /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91C67BF51F80EF8200F2EAFA /* ViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,6 +55,7 @@
 		91C67BED1F8011B800F2EAFA /* Converter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Converter.swift; sourceTree = "<group>"; };
 		91C67BEF1F801D0A00F2EAFA /* Carousel.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Carousel.storyboard; sourceTree = "<group>"; };
 		91C67BF11F801E9200F2EAFA /* CarouselViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarouselViewController.swift; sourceTree = "<group>"; };
+		91C67BF51F80EF8200F2EAFA /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +101,7 @@
 			children = (
 				91B709A01F7FCA65008F664A /* Main.storyboard */,
 				91B7099E1F7FCA65008F664A /* ViewController.swift */,
+				91C67BF51F80EF8200F2EAFA /* ViewModel.swift */,
 				91C67BEF1F801D0A00F2EAFA /* Carousel.storyboard */,
 				91C67BF11F801E9200F2EAFA /* CarouselViewController.swift */,
 			);
@@ -275,6 +278,7 @@
 				91C67BEE1F8011B800F2EAFA /* Converter.swift in Sources */,
 				91B709A51F7FCA65008F664A /* Wallet.xcdatamodeld in Sources */,
 				91C67BE41F7FDE2C00F2EAFA /* Parser.swift in Sources */,
+				91C67BF61F80EF8200F2EAFA /* ViewModel.swift in Sources */,
 				91B7099F1F7FCA65008F664A /* ViewController.swift in Sources */,
 				91B7099D1F7FCA65008F664A /* AppDelegate.swift in Sources */,
 			);

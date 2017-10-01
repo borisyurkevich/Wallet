@@ -18,19 +18,63 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eXH-R7-fjl">
-                                <rect key="frame" x="0.0" y="64" width="375" height="216"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="124"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="216" id="tED-Li-DE1"/>
+                                    <constraint firstAttribute="height" constant="124" id="tED-Li-DE1"/>
                                 </constraints>
                                 <connections>
                                     <segue destination="Y1c-gz-Jtu" kind="embed" identifier="carousel" id="Obx-n9-Q12"/>
                                 </connections>
                             </containerView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Currency:" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c5u-YV-ro9">
+                                <rect key="frame" x="16" y="196" width="135.5" height="28"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Amount:" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UPM-Yn-xk6">
+                                <rect key="frame" x="16" y="232.5" width="136" height="30"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="INK-nD-H7n">
+                                <rect key="frame" x="159" y="196" width="200" height="29"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="200" id="7rr-JB-leB"/>
+                                </constraints>
+                                <segments>
+                                    <segment title="First"/>
+                                    <segment title="Second"/>
+                                </segments>
+                                <connections>
+                                    <action selector="tapSegementedControl:" destination="BYZ-38-t0r" eventType="valueChanged" id="Nao-E0-vRy"/>
+                                </connections>
+                            </segmentedControl>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="U6e-TN-adZ">
+                                <rect key="frame" x="160" y="232" width="200" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="U6e-TN-adZ" firstAttribute="top" secondItem="INK-nD-H7n" secondAttribute="bottom" constant="8" symbolic="YES" id="7Bn-mx-dBu"/>
+                            <constraint firstItem="INK-nD-H7n" firstAttribute="top" secondItem="eXH-R7-fjl" secondAttribute="bottom" constant="8" symbolic="YES" id="9e3-UA-ZwW"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="INK-nD-H7n" secondAttribute="trailing" constant="16" id="9e9-g2-hUg"/>
                             <constraint firstItem="eXH-R7-fjl" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="CAg-F1-kv1"/>
+                            <constraint firstItem="INK-nD-H7n" firstAttribute="leading" secondItem="c5u-YV-ro9" secondAttribute="trailing" constant="8" id="I4o-AH-oab"/>
+                            <constraint firstItem="UPM-Yn-xk6" firstAttribute="height" secondItem="U6e-TN-adZ" secondAttribute="height" id="NXt-N0-2rK"/>
+                            <constraint firstItem="UPM-Yn-xk6" firstAttribute="centerY" secondItem="U6e-TN-adZ" secondAttribute="centerY" id="QrB-Bu-jgD"/>
                             <constraint firstItem="eXH-R7-fjl" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="XUb-9v-f6k"/>
+                            <constraint firstItem="U6e-TN-adZ" firstAttribute="width" secondItem="INK-nD-H7n" secondAttribute="width" id="Zhb-rR-1Ek"/>
+                            <constraint firstItem="c5u-YV-ro9" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="c4N-u8-IWo"/>
+                            <constraint firstItem="U6e-TN-adZ" firstAttribute="leading" secondItem="UPM-Yn-xk6" secondAttribute="trailing" constant="8" id="hyc-4f-wbI"/>
+                            <constraint firstItem="UPM-Yn-xk6" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="kKI-Zv-znZ"/>
+                            <constraint firstItem="c5u-YV-ro9" firstAttribute="height" secondItem="INK-nD-H7n" secondAttribute="height" id="lPa-H5-m1F"/>
+                            <constraint firstItem="c5u-YV-ro9" firstAttribute="top" secondItem="eXH-R7-fjl" secondAttribute="bottom" constant="8" symbolic="YES" id="qgQ-9w-kOA"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="U6e-TN-adZ" secondAttribute="trailing" constant="15" id="vWb-9m-rdL"/>
                             <constraint firstItem="eXH-R7-fjl" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="xgO-QB-CO8"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -41,7 +85,17 @@
                                 <action selector="tapRefresh:" destination="BYZ-38-t0r" id="KRx-jD-5Yj"/>
                             </connections>
                         </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" enabled="NO" title="Exchange" id="DWC-qf-QAH">
+                            <connections>
+                                <action selector="tapExchange:" destination="BYZ-38-t0r" id="WVx-hp-cEl"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="exchangeButton" destination="DWC-qf-QAH" id="gzz-ED-BMe"/>
+                        <outlet property="segmentedControl" destination="INK-nD-H7n" id="JH8-Ep-l2f"/>
+                        <outlet property="textField" destination="U6e-TN-adZ" id="Uro-2P-0yq"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
