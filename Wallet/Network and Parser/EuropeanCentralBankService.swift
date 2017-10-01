@@ -8,7 +8,19 @@
 
 import Foundation
 
+/// Loads URL for API from info.plist
 struct EuropeanCentralBankService {
     
-    let api = API(path: "https://www.ecb.europa.eu/stats/eurofxref/eurofxref-daily.xml")
+    let api: API
+    
+    init() {
+        let infoDic = Bundle.main.infoDictionary
+        guard let url = infoDic?["url"] else {
+            fatalError("Please add url to the Info.plist")
+        }
+        guard let safeURL = url as? String else {
+            fatalError("Something wrong with url value")
+        }
+        api = API(path: safeURL)
+    }
 }
