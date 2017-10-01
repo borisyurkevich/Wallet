@@ -16,7 +16,7 @@ extension ViewController: UITextFieldDelegate {
 
 extension ViewController: CarouselViewControllerDelegate {
     func updateState(newState: State) {
-        setExchangeCurrency(fromCurrencyIndex: newState.rawValue, toCurrencyIndex: nil, amount: nil)
+        setExchangeCurrency(fromCurrencyIndex: newState.rawValue)
         displayRates()
     }
 }
@@ -36,12 +36,25 @@ final class ViewController: UIViewController {
         actionExchange()
     }
     @IBAction func tapSegementedControl(_ sender: UISegmentedControl) {
-        setExchangeCurrency(fromCurrencyIndex: nil, toCurrencyIndex: sender.selectedSegmentIndex, amount: nil)
+        setExchangeCurrency(toCurrencyIndex: sender.selectedSegmentIndex)
         displayRates()
     }
-    @IBAction func textFieldEditingChange(_ sender: Any) {
-        if let text = amountPlusTextField.text {
-            setExchangeCurrency(fromCurrencyIndex: nil, toCurrencyIndex: nil, amount: Double(text))
+    @IBAction func amoutToBuyTextFieldChange(_ sender: UITextField) {
+        if let text = sender.text {
+            if text.isEmpty {
+                amountMinusTextField.text = nil
+            } else {
+                setExchangeCurrency(amountToBuy: Double(text))
+            }
+        }
+    }
+    @IBAction func sellAmountTextFieldChange(_ sender: UITextField) {
+        if let text = sender.text {
+            if text.isEmpty {
+                amountPlusTextField.text = nil
+            } else {            
+                setExchangeCurrency(amountToSell: Double(text))
+            }
         }
     }
     
@@ -51,7 +64,8 @@ final class ViewController: UIViewController {
     private var carouselViewController: CarouselViewController?
     private var currentCurrency: CurrencyType? = nil
     private var selectedToExchangeCurrency: CurrencyType? = nil
-    private var amountToExchange: Double = 0.0
+    private var amountToBuy: Double = 0.0
+    private var amountToSell: Double = 0.0
     private var converter: Converter?
     private var timer: Timer?
 
@@ -68,6 +82,7 @@ final class ViewController: UIViewController {
         coreData = PersistanceModel()
         displayUserBalance()
         amountPlusTextField.delegate = self
+        amountMinusTextField.delegate = self
         setupSegmentedControl()
         updateExchangeRatesRegularly()
     }
@@ -78,7 +93,7 @@ final class ViewController: UIViewController {
             segmentedControl.insertSegment(withTitle: currency.rawValue, at: index, animated: false)
         }
         segmentedControl.selectedSegmentIndex = 0
-        setExchangeCurrency(fromCurrencyIndex: nil, toCurrencyIndex: 0, amount: nil)
+        setExchangeCurrency(toCurrencyIndex: 0)
     }
     
     @objc
@@ -114,20 +129,53 @@ final class ViewController: UIViewController {
         }
     }
     
-    /// Set one of 3 properties required for exchange. This method validates
-    /// all 3 properties and toggles Exchange button enabled state.
-    private func setExchangeCurrency(fromCurrencyIndex: Int?, toCurrencyIndex: Int?, amount: Double?) {
+    /// Set one of 4 properties required for exchange. This method validates
+    /// all properties and toggles Exchange button enabled state.
+    /// When buy balance set it updates sell balance and vise versa.
+    private func setExchangeCurrency(fromCurrencyIndex: Int? = nil,
+                                     toCurrencyIndex: Int? = nil,
+                                     amountToBuy: Double? = nil,
+                                     amountToSell: Double? = nil) {
         if let to = toCurrencyIndex {
             selectedToExchangeCurrency = ViewModel.currences[to]
         }
         if let from = fromCurrencyIndex {
             currentCurrency = ViewModel.userAccounts[from]
         }
-        if let safeAmount = amount {
-            amountToExchange = safeAmount
+        if let safeAmountToBuy = amountToBuy {
+            self.amountToBuy = safeAmountToBuy
+        }
+        if let safeAmountToSell = amountToSell {
+            self.amountToSell = safeAmountToSell
         }
         
-        if currentCurrency == nil || selectedToExchangeCurrency == nil || amountToExchange == 0 {
+        if let from = self.currentCurrency, let to = self.selectedToExchangeCurrency, let safeConverter = converter {
+            if let safeAmountToBuy = amountToBuy {
+                if safeAmountToBuy > 0 {
+                    // Show amount which is goint to be sold
+                    let conversion = safeConverter.convert(fromCurrency: to, toCurrency: from, amount: safeAmountToBuy)
+                    if conversion.sucess {
+                        let formattedRate = String(format: "%.2f", conversion.amount!)
+                        self.amountMinusTextField.text = "\(formattedRate)"
+                    }
+                }
+            }
+            if let safeAmountToSell = amountToSell {
+                if safeAmountToSell > 0 {
+                    // Show amount which is goint to be sold
+                    let conversion = safeConverter.convert(fromCurrency: from, toCurrency: to, amount: safeAmountToSell)
+                    if conversion.sucess {
+                        let formattedRate = String(format: "%.2f", conversion.amount!)
+                        self.amountPlusTextField.text = "\(formattedRate)"
+                        // Also set amount which is goint to be bought.
+                        // This makes exchange possible.
+                        self.amountToBuy = conversion.amount!
+                    }
+                }
+            }
+        }
+        
+        if currentCurrency == nil || selectedToExchangeCurrency == nil || amountToBuy == 0 {
             exchangeButton.isEnabled = false
         } else {
             // It should not be possible to exchange to the same currency.
@@ -143,7 +191,7 @@ final class ViewController: UIViewController {
         }
         let exchange = safeConverted.convert(fromCurrency: selectedToExchangeCurrency!,
                                                toCurrency: currentCurrency!,
-                                                   amount: amountToExchange)
+                                                   amount: amountToBuy)
         if exchange.sucess {
             var fromAccount: Account?
             var toAccount: Account?
@@ -177,7 +225,7 @@ final class ViewController: UIViewController {
             // Dedact money from current.
             safeFromAccount.balance -= exchange.amount!
             // Add money to new account.
-            safeToAccount.balance += amountToExchange
+            safeToAccount.balance += amountToBuy
             let updatedAccounts = NSMutableSet(array: [safeToAccount, safeFromAccount])
             updatedAccounts.addObjects(from: irrelevantAccounts)
             user?.accounts = NSSet(set: updatedAccounts)
@@ -218,7 +266,7 @@ final class ViewController: UIViewController {
         }
         
         // By default currency in the middle selected, which is first in the array
-        self.setExchangeCurrency(fromCurrencyIndex: 0, toCurrencyIndex: nil, amount: nil)
+        self.setExchangeCurrency(fromCurrencyIndex: 0)
     }
     
     private func switchToEditingMode(isEditing: Bool) {
