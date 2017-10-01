@@ -2,10 +2,10 @@
 
 ## Goals
 1. UI screens with new `UIViewPropertyAnimator` (allows user to control animation).
-2. Currency rate display
-3. Currency converter
-4. Currency rates updated every 30 seconds with `Timer`
-5. Displaying active exchange rate
+2. Currency converter
+3. Currency rates updated every 30 seconds with `Timer`
+4. Displaying active exchange rate
+5. Ability to set amount to buy and amount to sell
 
 ## Functions
 1. Download XML data
