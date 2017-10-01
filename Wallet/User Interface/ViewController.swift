@@ -112,8 +112,8 @@ final class ViewController: UIViewController {
             return
         }
         let exchange = safeConverted.convert(fromCurrency: selectedToExchangeCurrency!,
-                                            toCurrency: currentCurrency!,
-                                                amount: amountToExchange)
+                                               toCurrency: currentCurrency!,
+                                                   amount: amountToExchange)
         if exchange.sucess {
             var fromAccount: Account?
             var toAccount: Account?
