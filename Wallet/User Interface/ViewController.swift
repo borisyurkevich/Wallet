@@ -16,7 +16,7 @@ extension ViewController: UITextFieldDelegate {
 
 extension ViewController: CarouselViewControllerDelegate {
     func updateState(newState: State) {
-        setExchangeCurrency(fromCurrencyIndex: newState.rawValue, toCurrencyIndex: nil)
+        setExchangeCurrency(fromCurrencyIndex: newState.rawValue, toCurrencyIndex: nil, amount: nil)
     }
 }
 
@@ -32,7 +32,12 @@ final class ViewController: UIViewController {
         actionExchange()
     }
     @IBAction func tapSegementedControl(_ sender: UISegmentedControl) {
-        setExchangeCurrency(fromCurrencyIndex: nil, toCurrencyIndex: sender.selectedSegmentIndex)
+        setExchangeCurrency(fromCurrencyIndex: nil, toCurrencyIndex: sender.selectedSegmentIndex, amount: nil)
+    }
+    @IBAction func textFieldEditingChange(_ sender: Any) {
+        if let text = textField.text {
+            setExchangeCurrency(fromCurrencyIndex: nil, toCurrencyIndex: nil, amount: Double(text))
+        }
     }
     
     private let service = EuropeanCentralBankService()
@@ -42,7 +47,9 @@ final class ViewController: UIViewController {
     private var carouselViewController: CarouselViewController?
     private var currentCurrency: CurrencyType? = nil
     private var selectedToExchangeCurrency: CurrencyType? = nil
+    private var amountToExchange: Double = 0.0
     
+
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "carousel" {
             carouselViewController = segue.destination as? CarouselViewController
@@ -77,15 +84,18 @@ final class ViewController: UIViewController {
         }
     }
     
-    private func setExchangeCurrency(fromCurrencyIndex: Int?, toCurrencyIndex: Int?) {
+    private func setExchangeCurrency(fromCurrencyIndex: Int?, toCurrencyIndex: Int?, amount: Double?) {
         if let to = toCurrencyIndex {
             currentCurrency = ViewModel.currences[to]
         }
         if let from = fromCurrencyIndex {
             selectedToExchangeCurrency = ViewModel.userAccounts[from]
         }
+        if let safeAmount = amount {
+            amountToExchange = safeAmount
+        }
         
-        if currentCurrency == nil || selectedToExchangeCurrency == nil {
+        if currentCurrency == nil || selectedToExchangeCurrency == nil || amountToExchange == 0 {
             exchangeButton.isEnabled = false
         } else {
             // It should not be possible to exchange to the same currency.
@@ -117,13 +127,12 @@ final class ViewController: UIViewController {
         }
         
         // By default currency in the middle selected, which is first in the array
-        self.setExchangeCurrency(fromCurrencyIndex: 0, toCurrencyIndex: nil)
+        self.setExchangeCurrency(fromCurrencyIndex: 0, toCurrencyIndex: nil, amount: nil)
     }
     
     private func switchToEditingMode(isEditing: Bool) {
         if isEditing {
             navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(self.dismissKeyboard))
-            exchangeButton.isEnabled = true
             
         } else {
             navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .refresh, target: self, action: #selector(self.actionRefresh))
