@@ -172,13 +172,14 @@ final class ViewController: UIViewController {
         }
         
         for account in user!.accounts!.allObjects as! [Account] {
+            let balance = String(format: "%.2f", account.balance)
             switch account.currencyType! {
                 case CurrencyType.usd.rawValue:
-                    carouselViewController?.leftLabel.text = "\(CurrencyType.usd.symbol())\(account.balance)"
+                    carouselViewController?.leftLabel.text = "\(CurrencyType.usd.symbol())\(balance)"
                 case CurrencyType.eur.rawValue:
-                    carouselViewController?.rightLabel.text = "\(CurrencyType.eur.symbol())\(account.balance)"
+                    carouselViewController?.rightLabel.text = "\(CurrencyType.eur.symbol())\(balance)"
                 case CurrencyType.gbp.rawValue:
-                    carouselViewController?.mainLabel.text = "\(CurrencyType.gbp.symbol())\(account.balance)"
+                    carouselViewController?.mainLabel.text = "\(CurrencyType.gbp.symbol())\(balance)"
                 default:
                     break
             }
