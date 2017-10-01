@@ -13,7 +13,7 @@
 3. Give current rate for provided currency type
 4. Display user balance for provided currency type
 5. Update user balance in persistent way
-6. Separate configuration file for setting URL and starting balance
+6. Separate configuration file for setting URL
 
 ## Unit Tests
 1. Test currency list, all property should return correct count of currencies.
