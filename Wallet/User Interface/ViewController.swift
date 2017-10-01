@@ -149,7 +149,7 @@ final class ViewController: UIViewController {
     }
     
     private func presentSuccessAlert() {
-        let title = "Exchange Performed Succesfully"
+        let title = "Exchange Succeeded"
         let alert = UIAlertController(title: title, message: nil, preferredStyle: .alert)
         let ok = UIAlertAction(title: "OK", style: .default, handler: nil)
         alert.addAction(ok)
