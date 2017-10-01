@@ -4,6 +4,8 @@
 1. UI screens with new `UIViewPropertyAnimator` (allows user to control animation).
 2. Currency rate display
 3. Currency converter
+4. Currency rates updated every 30 seconds with `Timer`
+5. Displaying active exchange rate
 
 ## Functions
 1. Download XML data

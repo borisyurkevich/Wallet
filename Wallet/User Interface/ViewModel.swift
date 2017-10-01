@@ -6,6 +6,8 @@
 //  Copyright © 2017 Boris Yurkevich. All rights reserved.
 //
 
+import Foundation
+
 //  This class separates buiseness logic from UI.
 struct ViewModel {
     
@@ -14,4 +16,6 @@ struct ViewModel {
     
     // Set amount of availble currencies in segmented control
     static let currences: [CurrencyType] = [.usd, .gbp, .eur]
+    
+    static let ratesPollUpdateInterval: TimeInterval = 30.0
 }

@@ -48,6 +48,7 @@ final class ViewController: UIViewController {
     private var selectedToExchangeCurrency: CurrencyType? = nil
     private var amountToExchange: Double = 0.0
     private var converter: Converter?
+    private var timer: Timer?
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "carousel" {
@@ -63,7 +64,7 @@ final class ViewController: UIViewController {
         displayUserBalance()
         textField.delegate = self
         setupSegmentedControl()
-        actionRefresh() // Download exchange rates.
+        updateExchangeRatesRegularly()
     }
     
     private func setupSegmentedControl() {
@@ -205,7 +206,13 @@ final class ViewController: UIViewController {
     private func dismissKeyboard() {
         switchToEditingMode(isEditing: false)
     }
-
+    
+    private func updateExchangeRatesRegularly() {
+        timer = Timer.scheduledTimer(withTimeInterval: ViewModel.ratesPollUpdateInterval, repeats: true, block: { (timer) in
+            self.actionRefresh()
+        })
+        timer!.fire()
+    }
 
 }
 
