@@ -27,6 +27,8 @@ struct Converter {
                 euroRateRelativeToGivenCurrency = rate.valueInEuro
             } else if rate.type == toCurrency {
                 rateFromEuroToNeededCurrency = rate.valueInEuro
+            } else if fromCurrency == .eur {
+                euroRateRelativeToGivenCurrency = 1.0
             }
         }
         if euroRateRelativeToGivenCurrency == nil {
