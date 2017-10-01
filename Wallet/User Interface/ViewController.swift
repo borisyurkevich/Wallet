@@ -40,8 +40,8 @@ final class ViewController: UIViewController {
     private var coreData: PersistanceModel? = nil
     private var user: User?
     private var carouselViewController: CarouselViewController?
-    private var excangeCurrency: CurrencyType? = nil
-    private var selectedCurrency: CurrencyType? = nil
+    private var currentCurrency: CurrencyType? = nil
+    private var selectedToExchangeCurrency: CurrencyType? = nil
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "carousel" {
@@ -79,13 +79,18 @@ final class ViewController: UIViewController {
     
     private func setExchangeCurrency(fromCurrencyIndex: Int?, toCurrencyIndex: Int?) {
         if let to = toCurrencyIndex {
-            excangeCurrency = ViewModel.currences[to]
+            currentCurrency = ViewModel.currences[to]
         }
         if let from = fromCurrencyIndex {
-            selectedCurrency = ViewModel.userAccounts[from]
+            selectedToExchangeCurrency = ViewModel.userAccounts[from]
         }
-        // It should not be possible to exchange to the same currency.
-        exchangeButton.isEnabled = excangeCurrency != selectedCurrency
+        
+        if currentCurrency == nil || selectedToExchangeCurrency == nil {
+            exchangeButton.isEnabled = false
+        } else {
+            // It should not be possible to exchange to the same currency.
+            exchangeButton.isEnabled = currentCurrency != selectedToExchangeCurrency
+        }
     }
     
     private func actionExchange() {
