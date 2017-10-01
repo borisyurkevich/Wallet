@@ -65,6 +65,7 @@ final class ViewController: UIViewController {
         displayUserBalance()
         textField.delegate = self
         setupSegmentedControl()
+        actionRefresh() // Download exchange rates.
     }
     
     private func setupSegmentedControl() {
@@ -108,7 +109,7 @@ final class ViewController: UIViewController {
     /// Only call this when selectedToExchangeCurrency and currentCurrency set.
     private func actionExchange() {
         guard let safeConverted = converter else {
-            print("converter not found")
+            presentAlert(text: "Coudln't Access Bank Rates")
             return
         }
         let exchange = safeConverted.convert(fromCurrency: selectedToExchangeCurrency!,
@@ -131,11 +132,11 @@ final class ViewController: UIViewController {
                 }
             }
             guard let safeToAccount = toAccount else {
-                presentAlert(text: "Exchange Error")
+                presentAlert(text: "Exchange Error", message: "Coudln't read destination account.")
                 return
             }
             guard let safeFromAccount = fromAccount else {
-                presentAlert(text: "Exchange Error")
+                presentAlert(text: "Exchange Error", message: "Coudn't access selected user account.")
                 return
             }
             // Make sure enough money on balance
@@ -153,12 +154,12 @@ final class ViewController: UIViewController {
             displayUserBalance()
             presentAlert(text: "Exchange Succeeded")
         } else {
-            presentAlert(text: "Exchange Failed")
+            presentAlert(text: "Exchange Failed", message: exchange.error)
         }
     }
     
-    private func presentAlert(text: String) {
-        let alert = UIAlertController(title: text, message: nil, preferredStyle: .alert)
+    private func presentAlert(text: String, message: String? = nil) {
+        let alert = UIAlertController(title: text, message: message, preferredStyle: .alert)
         let ok = UIAlertAction(title: "OK", style: .default, handler: nil)
         alert.addAction(ok)
         present(alert, animated: true, completion: nil)

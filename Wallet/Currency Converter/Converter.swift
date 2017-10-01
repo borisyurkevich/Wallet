@@ -30,10 +30,10 @@ struct Converter {
             }
         }
         if euroRateRelativeToGivenCurrency == nil {
-            return (false, "Couldn't find EUR rate to \(fromCurrency.rawValue)", nil)
+            return (false, "Couldn't find EUR rate to \(fromCurrency.rawValue).", nil)
         }
         if rateFromEuroToNeededCurrency == nil {
-            return (false, "Couldn't find EUR rate to \(toCurrency.rawValue)", nil)
+            return (false, "Couldn't find EUR rate to \(toCurrency.rawValue).", nil)
         }
         
         // Because our rates are relative to € we need to convert to € first.
