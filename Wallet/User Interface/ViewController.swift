@@ -16,6 +16,7 @@ extension ViewController: UITextFieldDelegate {
 
 extension ViewController: CarouselViewControllerDelegate {
     func updateState(newState: State) {
+        resetTextFields()
         setExchangeCurrency(fromCurrencyIndex: newState.rawValue)
         displayRates()
     }
@@ -36,6 +37,7 @@ final class ViewController: UIViewController {
         actionExchange()
     }
     @IBAction func tapSegementedControl(_ sender: UISegmentedControl) {
+        resetTextFields()
         setExchangeCurrency(toCurrencyIndex: sender.selectedSegmentIndex)
         displayRates()
     }
@@ -290,6 +292,13 @@ final class ViewController: UIViewController {
             self.actionRefresh()
         })
         timer!.fire()
+    }
+    
+    private func resetTextFields() {
+        amountPlusTextField.text = nil
+        amountMinusTextField.text = nil
+        amountToBuy = 0.0
+        amountToSell = 0.0
     }
 
 }
